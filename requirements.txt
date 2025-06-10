@@ -1,0 +1,36 @@
+#### Plik: `requirements.txt`
+Ten plik zawiera tylko te pakiety, które są absolutnie niezbędne do uruchomienia biblioteki GTMØ.
+
+```ini
+# Plik: requirements.txt
+# ----------------------------------
+# Zależności uruchomieniowe dla Uogólnionej Teorii Matematycznej Niedefinitywności (GTMØ).
+
+numpy>=1.23.0,<2.0.0
+```
+
+#### Plik: `requirements-dev.txt`
+Ten plik zawiera pakiety potrzebne do testowania, lintowania i statycznej analizy kodu.
+
+```ini
+# Plik: requirements-dev.txt
+# ----------------------------------
+# Zależności deweloperskie i testowe dla GTMØ.
+# Aby zainstalować, użyj: pip install -r requirements-dev.txt
+
+# Dołącz zależności uruchomieniowe
+-r requirements.txt
+
+# Narzędzia do testowania
+pytest>=7.0.0
+
+# Narzędzia do analizy statycznej i jakości kodu
+mypy>=1.0.0
+ruff>=0.1.0
+```
+
+**Jak używać:**
+1.  **Instalacja produkcyjna:** `pip install -r requirements.txt`
+2.  **Instalacja deweloperska:** `pip install -r requirements-dev.txt`
+
+---
