@@ -216,3 +216,4 @@ class AlienatedNumber(Number):
     def to_json(self) -> str:
         """Return JSON string representation of AlienatedNumber."""
         return f'"{self.__repr__()}"'
+
