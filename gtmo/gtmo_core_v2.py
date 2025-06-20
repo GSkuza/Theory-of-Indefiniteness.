@@ -1,4 +1,4 @@
-"""gtmo-core-v2.py
+"""gtmo_core_v2.py
 Enhanced GTMØ Implementation with Dynamic Values, Topological Classification,
 Executable Axioms, and Adaptive Learning.
 
