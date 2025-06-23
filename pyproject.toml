@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gtmo"
+version = "0.1.0"
+description = "Generalized Theory of Mathematical Indefiniteness library"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{name = "GTMØ Contributors"}]
+license = {text = "MIT"}
+dependencies = ["numpy>=1.23.0,<2.0.0"]
+
+[project.optional-dependencies]
+torch = ["torch"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["gtmo*"]
+
+[tool.setuptools]
+py-modules = [
+    "core",
+    "gtmo_core_v2",
+    "gtmo_axioms",
+    "gtmo_axioms_v2",
+    "gtmo_interop_v3",
+    "topology",
+    "utils",
+]
