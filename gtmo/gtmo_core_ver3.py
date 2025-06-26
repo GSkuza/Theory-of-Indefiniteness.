@@ -4,7 +4,7 @@ GTMO CORE v3.0 - SYNTHESIS OF CONFIGURATIONAL AND ADAPTIVE APPROACHES
 
 This version combines:
 - Configurational Framework's AlienatedNumbers and emergence theory
-- v7.0's observation lenses and adaptive metrics
+- Observation lenses and adaptive metrics
 - New unified theory of cognitive trajectories
 
 Key Synthesis:
