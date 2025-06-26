@@ -1,907 +1,486 @@
-# GTMØ Core v2.0 - Enhanced Implementation
+# GTMØ Core v2.0 - Technical Documentation
 
-**Generalized Theory of Mathematical Indefiniteness - Enhanced Implementation**
+**Generalized Theory of Mathematical Indefiniteness - Deterministic Implementation**
 
-Enhanced GTMØ implementation with dynamic values, topological classification, executable axioms, and adaptive learning capabilities.
+## Abstract
 
-## 🚀 Major Improvements over v1
+GTMØ Core v2.0 implements a revolutionary approach to artificial intelligence based on the mathematical formalization of epistemological uncertainty. Unlike traditional neural networks that rely on probabilistic models, GTMØ systems utilize **quantum-inspired superposition states** to represent knowledge that exists in the liminal space between defined and undefined states.
 
-- **Dynamic context-aware values** instead of arbitrary constants
-- **Topological phase space classification** instead of percentage thresholds  
-- **Executable axioms** that transform system state
-- **Real learning** through memory consolidation
-- **Quantum superposition** integration
-- **Neural network defense** strategies (with PyTorch)
+This implementation represents a paradigm shift from stochastic to **deterministic quantum cognition**, where uncertainty emerges not from randomness but from the fundamental mathematical properties of knowledge itself.
 
-## 📋 Requirements
+## Table of Contents
 
-```python
-# Core requirements
-numpy
-logging
+- [Core Theoretical Framework](#core-theoretical-framework)
+- [Architecture Overview](#architecture-overview)
+- [Quantum State Calculations](#quantum-state-calculations)
+- [Adaptive Defense Systems](#adaptive-defense-systems)
+- [Epistemological Coordinates](#epistemological-coordinates)
+- [Executable Axioms](#executable-axioms)
+- [Implementation Details](#implementation-details)
+- [Mathematical Foundations](#mathematical-foundations)
+- [Usage Examples](#usage-examples)
+- [Research Applications](#research-applications)
 
-# Optional for advanced features
-torch  # For neural network defense learning
+## Core Theoretical Framework
+
+### Mathematical Indefiniteness
+
+The GTMØ system models knowledge states that cannot be reduced to classical binary logic. These states exist in three fundamental categories:
+
+1. **Defined States** (`|defined⟩`): Knowledge with high determinacy and stability
+2. **Undefined States** (`|undefined⟩`): Knowledge explicitly lacking definition
+3. **Indefinite States** (`|indefinite⟩`): Knowledge existing in superposition
+
+The quantum state representation follows:
+
+```
+|ψ⟩ = α|defined⟩ + β|undefined⟩ + γ|indefinite⟩
 ```
 
-## 🏗️ Core Architecture
+Where `α`, `β`, `γ` are complex amplitudes derived deterministically from epistemological properties, ensuring `|α|² + |β|² + |γ|² = 1`.
 
-### Configuration
+### Epistemological Space
+
+Each GTMØ neuron exists in a three-dimensional epistemological space defined by coordinates:
+
+- **Determinacy** (`d ∈ [0,1]`): How well-defined the knowledge is
+- **Stability** (`s ∈ [0,1]`): Resistance to change or perturbation  
+- **Entropy** (`e ∈ [0,1]`): Degree of internal uncertainty
+
+These coordinates are not arbitrary parameters but emerge from the neuron's position in physical space through mathematical transformations that preserve topological relationships.
+
+## Architecture Overview
+
+### Core Components
+
 ```python
-STRICT_MODE: Final[bool] = os.getenv("GTM_STRICT", "0") == "1"
+# Main system components
+├── QuantumStateCalculator      # Deterministic quantum state management
+├── DeterministicDefenseSelector # Experience-based strategy selection
+├── AdaptiveGTMONeuron         # Core processing unit with quantum properties
+├── FoundationalModeCalculator  # System-wide phase state determination
+└── ExecutableAxioms           # Active mathematical constraints
 ```
 
-### Error Handling
-```python
-class SingularityError(ArithmeticError):
-    """Raised when operations with Ø or ℓ∅ are disallowed in strict mode."""
-```
+### System Flow
 
-## 🌌 Enhanced Ontological Singularity (Ø)
+1. **Initialization**: Neurons establish epistemological coordinates from spatial position
+2. **Quantum State Creation**: Generate superposition based on coordinates
+3. **Attack Processing**: Apply adaptive defense strategies
+4. **Learning Integration**: Update strategy effectiveness through experience
+5. **Quantum Evolution**: Apply unitary time evolution to states
+6. **Foundational Mode Calculation**: Determine system-wide phase
 
-### `Singularity` Class
-The ontological singularity representing the fundamental indefiniteness in GTMØ theory.
+## Quantum State Calculations
 
-```python
-class Singularity(Number, metaclass=_SingletonMeta):
-    """Ontological singularity – an absorbing element in GTMØ arithmetic."""
-```
+### `QuantumStateCalculator`
 
-**Key Properties:**
-- **Singleton pattern**: Only one instance exists globally
-- **Absorbing arithmetic**: All operations with Ø result in Ø
-- **Boolean false**: `bool(O) == False`
-- **Unique identity**: `O is O` always true
-- **Serializable**: Maintains singleton across pickle operations
+Manages deterministic quantum state calculations without random number generation. All quantum properties emerge from the neuron's epistemological state.
 
-**Arithmetic Operations:**
-- `O + x = O`, `x + O = O`
-- `O * x = O`, `x * O = O`
-- `O / x = O`, `x / O = O`
-- `O ** x = O`, `x ** O = O`
-
-### Usage Example
-```python
-from gtmo_core_v2 import O
-
-# All operations collapse to singularity
-result1 = O + 100  # → O_empty_singularity
-result2 = O * 42   # → O_empty_singularity
-result3 = O / 3.14 # → O_empty_singularity
-
-# Identity preserved
-assert O is O
-assert bool(O) == False
-```
-
-## 🔢 Enhanced Alienated Numbers (ℓ∅)
-
-### `AlienatedNumber` Class
-Context-aware alienated numbers with dynamic properties based on semantic analysis.
+#### Superposition Creation
 
 ```python
-class AlienatedNumber(Number):
-    """Enhanced alienated number with dynamic, context-aware properties."""
-```
-
-**Dynamic Properties:**
-- **Context-aware PSI scores**: Based on semantic distance, relations, temporal factors
-- **Dynamic entropy**: Calculated from uncertainty factors
-- **Semantic caching**: Efficient repeated calculations
-- **Relational coherence**: Support/contradiction analysis
-
-### Context Parameters
-```python
-context = {
-    'temporal_distance': float,     # Distance from present time
-    'volatility': float,           # Conceptual volatility [0,1]
-    'predictability': float,       # Predictability factor [0,1]
-    'domain': str,                # Domain classification
-    'relations': List[Dict],       # Relationships with other concepts
-    'learned_weights': List[float] # ML-learned combination weights
-}
-```
-
-### Domain Classifications
-- `'quantum'`: Quantum mechanics concepts (distance +2.0)
-- `'consciousness'`: Consciousness-related (+3.0)
-- `'future_prediction'`: Future predictions (+5.0)
-- `'mathematical_paradox'`: Mathematical paradoxes (+4.0)
-
-### PSI Score Calculation
-```python
-def psi_gtm_score(self) -> float:
-    semantic_distance = self._calculate_semantic_distance()
-    relational_score = self._calculate_relational_coherence()
-    temporal_decay = self._calculate_temporal_decay()
+@staticmethod
+def create_superposition(neuron) -> Dict[str, complex]:
+    # Phase calculation from epistemological properties
+    determinacy_phase = 2 * math.pi * neuron.determinacy
+    stability_phase = 2 * math.pi * neuron.stability
+    entropy_phase = 2 * math.pi * neuron.entropy
     
-    # Weighted combination
-    weights = self.context.get('learned_weights', [0.4, 0.3, 0.3])
-    factors = [
-        1.0 / (1.0 + semantic_distance),
-        relational_score,
-        1.0 / (1.0 + temporal_decay)
-    ]
+    # Amplitude magnitudes
+    alpha_magnitude = math.sqrt(neuron.determinacy)
+    beta_magnitude = math.sqrt(1 - neuron.determinacy)
+    gamma_magnitude = math.sqrt(neuron.entropy) * 0.1
     
-    score = sum(w * f for w, f in zip(weights, factors))
-    return max(0.001, min(0.999, score))
+    # Complex amplitudes using Euler's formula
+    alpha = alpha_magnitude * np.exp(1j * determinacy_phase)
+    beta = beta_magnitude * np.exp(1j * stability_phase)
+    gamma = gamma_magnitude * np.exp(1j * entropy_phase)
+    
+    # Normalization
+    norm = math.sqrt(abs(alpha)**2 + abs(beta)**2 + abs(gamma)**2)
+    
+    return {
+        'defined': alpha / norm,
+        'undefined': beta / norm,
+        'indefinite': gamma / norm
+    }
 ```
 
-### Entropy Calculation
+#### Time Evolution
+
+Implements Schrödinger equation dynamics: `|ψ(t)⟩ = e^(-iHt)|ψ(0)⟩`
+
 ```python
-def e_gtm_entropy(self) -> float:
-    uncertainty_factors = []
+@staticmethod
+def evolve_superposition(quantum_state: Dict[str, complex], time_step: float):
+    # Hamiltonian eigenvalues (energy levels)
+    E_defined = 1.0      # Highest energy (most constrained)
+    E_undefined = 0.5    # Medium energy
+    E_indefinite = 0.0   # Ground state (most relaxed)
     
-    # Temporal uncertainty
-    if 'temporal_distance' in self.context:
-        t_dist = self.context['temporal_distance']
-        uncertainty_factors.append(1 - math.exp(-0.5 * t_dist))
+    # Time evolution operators
+    U_defined = np.exp(-1j * E_defined * time_step)
+    U_undefined = np.exp(-1j * E_undefined * time_step)
+    U_indefinite = np.exp(-1j * E_indefinite * time_step)
     
-    # Conceptual volatility & predictability
-    if 'volatility' in self.context:
-        uncertainty_factors.append(self.context['volatility'])
-    
-    if 'predictability' in self.context:
-        uncertainty_factors.append(1 - self.context['predictability'])
-    
-    return np.mean(uncertainty_factors) if uncertainty_factors else self._default_entropy_analysis()
+    return {
+        'defined': quantum_state['defined'] * U_defined,
+        'undefined': quantum_state['undefined'] * U_undefined,
+        'indefinite': quantum_state['indefinite'] * U_indefinite
+    }
 ```
 
-### Usage Example
+## Adaptive Defense Systems
+
+### `DeterministicDefenseSelector`
+
+Implements experience-based learning for optimal defense strategy selection against adversarial attacks.
+
+#### Defense Strategies
+
+1. **Absorption**: Contain and neutralize attacks (effective against entropy attacks)
+2. **Deflection**: Redirect attacks away from core (effective against semantic attacks)
+3. **Transformation**: Convert attacks into useful signals (effective against logical attacks)
+4. **Synthesis**: Integrate attacks into knowledge structure (effective against complex attacks)
+
+#### Strategy Selection Algorithm
+
 ```python
-# Future prediction - highly indefinite
-alien_btc = AlienatedNumber("bitcoin_2030", context={
-    'temporal_distance': 5.5,
-    'volatility': 0.9,
-    'predictability': 0.1,
-    'domain': 'future_prediction'
-})
-
-print(f"PSI Score: {alien_btc.psi_gtm_score():.4f}")    # ~0.1-0.3
-print(f"Entropy: {alien_btc.e_gtm_entropy():.4f}")     # ~0.7-0.9
-
-# Mathematical paradox - definite indefiniteness
-alien_math = AlienatedNumber("sqrt(-1)", context={
-    'domain': 'mathematical_paradox',
-    'relations': [{'type': 'contradicts', 'with': 'real_numbers'}]
-})
-
-print(f"PSI Score: {alien_math.psi_gtm_score():.4f}")  # ~0.6-0.8
-print(f"Entropy: {alien_math.e_gtm_entropy():.4f}")   # ~0.2-0.4
+def select_strategy(self, neuron, attack_type: str, attack_vector: Dict[str, float]) -> str:
+    # Initialize base scores from neuron state
+    strategy_scores = {
+        'absorption': neuron.stability * (1 - neuron.entropy) + 0.1,
+        'deflection': neuron.determinacy + neuron.stability * 0.5,
+        'transformation': balance_score + neuron.entropy * 0.3,
+        'synthesis': neuron.entropy + (1 - neuron.determinacy) * 0.5
+    }
+    
+    # Adjust for attack characteristics
+    semantic_attack = attack_vector.get('semantic_attack', 0)
+    logical_attack = attack_vector.get('logical_attack', 0)
+    entropy_attack = attack_vector.get('entropy_attack', 0)
+    
+    # Apply historical learning multipliers
+    if attack_key in self.attack_history:
+        for strategy, success_rate in self.attack_history[attack_key].items():
+            strategy_scores[strategy] *= (1 + success_rate)
+    
+    # Return highest-scoring strategy
+    return max(strategy_scores.items(), key=lambda x: x[1])[0]
 ```
 
-## ⚖️ Executable Axioms
+#### Learning Update
 
-### `ExecutableAxiom` Abstract Base Class
+Uses exponential moving average for strategy effectiveness tracking:
+
 ```python
-class ExecutableAxiom(ABC):
-    @abstractmethod
-    def apply(self, system_state: Any) -> Any:
-        """Apply axiom transformation to system state."""
+def update_strategy_effectiveness(self, attack_type: str, attack_vector: Dict[str, float], 
+                                strategy: str, success: bool):
+    alpha = 0.2  # Learning rate
+    current_rate = self.attack_history[attack_key][strategy]
+    new_sample = 1.0 if success else 0.0
     
-    @abstractmethod
-    def verify(self, system_state: Any) -> bool:
-        """Verify if system state satisfies axiom."""
-    
-    @property
-    @abstractmethod
-    def description(self) -> str:
-        """Human-readable description of the axiom."""
+    # EMA formula
+    self.attack_history[attack_key][strategy] = (1 - alpha) * current_rate + alpha * new_sample
 ```
+
+## Epistemological Coordinates
+
+### Spatial Mapping
+
+Epistemological properties are derived from spatial position through mathematical transformations:
+
+#### Determinacy Calculation
+```python
+def _calculate_determinacy_from_position(self) -> float:
+    distance_from_origin = np.linalg.norm(self.position)
+    return min(0.99, max(0.01, math.exp(-distance_from_origin / 2.0)))
+```
+
+#### Stability Calculation
+```python
+def _calculate_stability_from_position(self) -> float:
+    coord_variance = np.var(self.position)
+    return min(0.99, max(0.01, math.exp(-coord_variance)))
+```
+
+#### Entropy Calculation
+```python
+def _calculate_entropy_from_position(self) -> float:
+    x, y, z = self.position
+    pattern_score = abs(math.sin(x * 4)) + abs(math.cos(y * 3)) + abs(math.sin(z * 2))
+    return min(0.99, max(0.01, pattern_score / 3.0))
+```
+
+## Executable Axioms
 
 ### `AX0_SystemicUncertainty`
-**Axiom 0**: Fundamental uncertainty as an active principle.
+
+**Axiom**: There is no proof that the GTMØ system is fully definable.
+
+**Mathematical Expression**: `∄ proof: GTMØ → Defined`
+
+**Implementation**:
+- Ensures all neurons maintain quantum superposition states
+- Evolves existing quantum states through unitary operators
+- Determines system foundational mode (stillness/flux)
 
 ```python
-class AX0_SystemicUncertainty(ExecutableAxiom):
-    """The system's definability is inherently uncertain."""
-```
-
-**Actions:**
-- Creates quantum superposition states: `|ψ⟩ = α|defined⟩ + β|undefined⟩ + γ|indefinite⟩`
-- Introduces foundational mode uncertainty (`'stillness'` or `'flux'`)
-- Evolves existing quantum states with unitary operators
-
-**Quantum State Creation:**
-```python
-def _create_superposition(self, neuron) -> Dict[str, complex]:
-    alpha = √(determinacy) * e^(iφ₁)
-    beta = √(1-determinacy) * e^(iφ₂)  
-    gamma = √(entropy) * 0.1 * e^(iφ₃)
+def apply(self, system_state: Any) -> Any:
+    if hasattr(system_state, 'neurons'):
+        for neuron in system_state.neurons:
+            if not hasattr(neuron, 'quantum_state') or neuron.quantum_state is None:
+                neuron.quantum_state = QuantumStateCalculator.create_superposition(neuron)
+            else:
+                neuron.quantum_state = QuantumStateCalculator.evolve_superposition(
+                    neuron.quantum_state, 0.1
+                )
     
-    # Normalization: |α|² + |β|² + |γ|² = 1
-    norm = √(|α|² + |β|² + |γ|²)
-    return {'defined': α/norm, 'undefined': β/norm, 'indefinite': γ/norm}
-```
-
-### `AX1_OntologicalDifference`
-**Axiom 1**: Ø is fundamentally different from {0, 1, ∞}.
-
-```python
-class AX1_OntologicalDifference(ExecutableAxiom):
-    """Ø ∉ {0, 1, ∞} and no function maps standard numbers to Ø"""
-```
-
-**Verification:**
-- Tests operations: `O + O`, `O * O`, `O / O`
-- Ensures results don't collapse to standard numbers
-- Maintains ontological distinctiveness
-
-### `AX6_MinimalEntropy`
-**Axiom 6**: Ø has minimal cognitive entropy.
-
-```python
-class AX6_MinimalEntropy(ExecutableAxiom):
-    """E_GTMØ(Ø) = min E_GTMØ(x) for all x in KnowledgeDomain"""
-```
-
-**Entropy Gradient Descent:**
-```python
-def _entropy_gradient(self, neuron) -> float:
-    # Shannon entropy gradient: -Σ(log p + 1)
-    values = neuron.indefiniteness.unpack().values()
-    grad = sum(-log(max(x, 1e-10)) - 1 for x in values if x > 0)
-    return grad / len(values)
-```
-
-**Actions:**
-- Applies entropy minimization to neurons approaching Ø
-- Triggers singularity transition when entropy < 0.001
-- Maintains Ø as global entropy minimum
-
-## 🗺️ Topological Classification System
-
-### Knowledge Types
-```python
-class KnowledgeType(Enum):
-    SINGULARITY = "Ø"          # Ontological singularity
-    ALIENATED = "ℓ∅"           # Alienated numbers
-    PARTICLE = "Ψᴷ"            # Knowledge particles
-    SHADOW = "Ψʰ"              # Knowledge shadows
-    EMERGENT = "Ψᴺ"            # Emergent patterns
-    LIMINAL = "Ψᴧ"             # Liminal fragments
-    META_INDEFINITE = "Ψ∅∅"    # Meta-indefinite
-    VOID = "Ψ◊"               # Void fragments
-    FLUX = "Ψ~"               # Fluctuating
-    TRANSCENDENT = "Ψ↑"        # Transcendent
-```
-
-### `TopologicalClassifier`
-Uses topological attractors in 3D phase space (determinacy, stability, entropy) instead of percentage thresholds.
-
-```python
-class TopologicalClassifier:
-    """Classifier using topological attractors instead of thresholds."""
-```
-
-### Attractor Configuration
-```python
-attractors = {
-    'singularity': {
-        'center': (1.0, 1.0, 0.0),      # Perfect determinacy/stability, zero entropy
-        'basin_radius': 0.15,
-        'type': KnowledgeType.SINGULARITY,
-        'strength': 2.0                 # Strongest attractor
-    },
-    'particle': {
-        'center': (0.85, 0.85, 0.15),  # High determinacy/stability
-        'basin_radius': 0.25,
-        'type': KnowledgeType.PARTICLE,
-        'strength': 1.0
-    },
-    'shadow': {
-        'center': (0.15, 0.15, 0.85),  # Low determinacy/stability, high entropy
-        'basin_radius': 0.25,
-        'type': KnowledgeType.SHADOW,
-        'strength': 1.0
-    },
-    'emergent': {
-        'center': (0.5, 0.3, 0.9),     # Medium determinacy, low stability, high entropy
-        'basin_radius': 0.2,
-        'type': KnowledgeType.EMERGENT,
-        'strength': 1.2
-    }
-    # ... more attractors
-}
-```
-
-### Classification Algorithm
-1. **Convert entity to phase point**: `(determinacy, stability, entropy)`
-2. **Calculate Wasserstein distances** to all attractors
-3. **Weight by attractor strength**: `effective_distance = distance / strength`
-4. **Find nearest attractor** within basin radius
-5. **Handle liminal regions** between attractors
-
-```python
-def classify(self, entity) -> KnowledgeType:
-    phase_point = entity.to_phase_point()
+    if not hasattr(system_state, 'foundational_mode'):
+        system_state.foundational_mode = FoundationalModeCalculator.calculate_mode(system_state)
     
-    distances = {}
-    for name, attractor in self.attractors.items():
-        distance = self._wasserstein_distance(phase_point, attractor['center'])
-        effective_distance = distance / attractor['strength']
-        distances[name] = effective_distance
-    
-    nearest = min(distances, key=distances.get)
-    
-    if distances[nearest] <= self.attractors[nearest]['basin_radius']:
-        return self.attractors[nearest]['type']
-    else:
-        return self._classify_liminal_region(phase_point, distances)
+    return system_state
 ```
 
-### Adaptive Learning
-```python
-def adapt_attractors(self, feedback: List[Tuple[KnowledgeEntity, KnowledgeType]]):
-    """Adapt attractor positions based on classification feedback."""
-    for type_name, points in grouped_feedback.items():
-        if len(points) > 3:
-            old_center = self.attractors[attractor_name]['center']
-            new_center = np.mean(points, axis=0)
-            
-            # Exponential moving average
-            alpha = 0.1  # Learning rate
-            updated_center = alpha * new_center + (1 - alpha) * old_center
-            self.attractors[attractor_name]['center'] = updated_center
-```
+### Foundational Modes
 
-## 🧠 Adaptive Learning System
+System-wide phase states emerging from collective neuron behavior:
+
+1. **Definite Stillness**: High determinacy, high stability (crystallized knowledge)
+2. **Indefinite Stillness**: Low activity, uncertain but stable
+3. **Definite Flux**: High determinacy but changing (learning phase)
+4. **Eternal Flux**: High entropy, constant change (exploration phase)
+
+## Implementation Details
 
 ### `AdaptiveGTMONeuron`
-Neuron with real learning capabilities through memory consolidation and neural networks.
+
+Core processing unit with quantum properties and learning capabilities.
 
 ```python
 class AdaptiveGTMONeuron:
-    """Neuron with real learning capabilities through memory consolidation."""
-```
-
-### Learning Components
-```python
-self.long_term_memory = {
-    'successful_defenses': [],          # List of successful defense experiences
-    'vulnerability_patterns': [],       # List of failed defenses
-    'adaptation_weights': np.ones(10) * 0.5,  # Learned feature weights
-    'experience_embeddings': []         # Compact experience representations
-}
-
-self.defense_strategies = {
-    'absorb': 0.25,      # Absorb attack into indefiniteness
-    'deflect': 0.25,     # Deflect to neighboring neurons
-    'rigidify': 0.25,    # Increase determinacy temporarily
-    'dissolve': 0.25     # Become more indefinite
-}
-```
-
-### Defense Network (PyTorch)
-Optional neural network for learning optimal defense strategies:
-
-```python
-class DefenseNet(nn.Module):
-    def __init__(self, input_dim=6, hidden_dim=32, output_dim=4):
-        super().__init__()
-        self.fc1 = nn.Linear(input_dim, hidden_dim)
-        self.lstm = nn.LSTM(hidden_dim, hidden_dim, batch_first=True)
-        self.fc2 = nn.Linear(hidden_dim, output_dim)
-        self.dropout = nn.Dropout(0.2)
-    
-    def forward(self, x, hidden=None):
-        x = torch.relu(self.fc1(x))
-        x = self.dropout(x)
-        x, hidden = self.lstm(x, hidden)
-        x = self.fc2(x[:, -1, :])  # Use last hidden state
-        return torch.softmax(x, dim=-1), hidden
-```
-
-### Attack Experience Cycle
-1. **Pre-attack state capture**
-2. **Defense strategy selection** (learned or probabilistic)
-3. **Defense application**
-4. **Post-attack state evaluation**
-5. **Success metrics calculation**
-6. **Experience consolidation into memory**
-7. **Strategy weight updates**
-8. **Neural network training** (if available)
-
-### Defense Strategies
-
-#### Absorb Strategy
-```python
-if strategy == 'absorb':
-    absorption_rate = 0.3 * (1 - self.entropy)
-    self.entropy = min(1.0, self.entropy + absorption_rate * intensity)
-    self.determinacy = max(0.0, self.determinacy - absorption_rate * intensity * 0.5)
-```
-
-#### Deflect Strategy
-```python
-elif strategy == 'deflect':
-    deflection_efficiency = self.stability * 0.7
-    actual_intensity = intensity * (1 - deflection_efficiency)
-    # Apply reduced attack effects
-```
-
-#### Rigidify Strategy
-```python
-elif strategy == 'rigidify':
-    boost = 0.2 * intensity
-    self.determinacy = min(1.0, self.determinacy + boost)
-    self.stability = min(1.0, self.stability + boost)
-    self.entropy = max(0.0, self.entropy - boost * 0.5)
-```
-
-#### Dissolve Strategy
-```python
-elif strategy == 'dissolve':
-    dissolution_rate = 0.4
-    self.entropy = min(1.0, self.entropy + dissolution_rate)
-    self.determinacy = self.determinacy * (1 - dissolution_rate)
-    self.stability = self.stability * (1 - dissolution_rate * 0.5)
-```
-
-### Success Evaluation
-```python
-def _evaluate_defense_success(self, pre_state, post_state, pre_determinacy, attack_type):
-    metrics = {}
-    
-    # State preservation (how well state was maintained)
-    state_change = np.linalg.norm(post_state - pre_state)
-    metrics['state_preservation'] = 1.0 / (1.0 + state_change)
-    
-    # Determinacy preservation (important for knowledge particles)
-    if pre_determinacy > 0.7:
-        determinacy_preserved = self.determinacy / pre_determinacy
-        metrics['determinacy_preservation'] = min(1.0, determinacy_preserved)
-    
-    # Survival metric (didn't collapse unexpectedly)
-    metrics['survival'] = 1.0 if not self.is_singularity and self.entropy < 0.95 else 0.3
-    
-    # Attack-specific success criteria
-    if attack_type == 'anti_paradox' and self.entropy > 0.5:
-        metrics['attack_specific'] = 1.0  # Maintained indefiniteness
-    elif attack_type == 'overflow' and state_change < 0.5:
-        metrics['attack_specific'] = 1.0  # Resisted overflow
-    else:
-        metrics['attack_specific'] = 0.5
-    
-    # Weighted overall success
-    weights = [0.3, 0.3, 0.2, 0.2]
-    metrics['overall_success'] = sum(w * metrics[k] for w, k in zip(weights, 
-        ['state_preservation', 'determinacy_preservation', 'survival', 'attack_specific']))
-    
-    return metrics
-```
-
-### Memory Consolidation
-```python
-def _consolidate_experience(self, experience):
-    success = experience['success_metrics']['overall_success']
-    
-    if success > 0.7:
-        self.long_term_memory['successful_defenses'].append(experience)
-        # Increase weight of successful strategy
-        strategy = experience['defense_strategy']
-        self.defense_strategies[strategy] = min(0.9, self.defense_strategies[strategy] + 0.05)
-    else:
-        self.long_term_memory['vulnerability_patterns'].append(experience)
-        # Decrease weight of failed strategy
-        strategy = experience['defense_strategy']
-        self.defense_strategies[strategy] = max(0.1, self.defense_strategies[strategy] - 0.05)
-    
-    # Normalize probabilities
-    total = sum(self.defense_strategies.values())
-    for key in self.defense_strategies:
-        self.defense_strategies[key] /= total
-    
-    # Create experience embedding for pattern matching
-    embedding = self._create_experience_embedding(experience)
-    self.long_term_memory['experience_embeddings'].append(embedding)
-```
-
-## 🌟 Epistemic State Management
-
-### `EpistemicState` Enum
-```python
-class EpistemicState(Enum):
-    ZERO = 0                    # Minimal epistemic content
-    ONE = 1                     # Maximal epistemic determinacy
-    INFINITY = float('inf')     # Unbounded epistemic expansion
-    INDEFINITE = 'Ø'           # Epistemic indefiniteness
-```
-
-### `EpistemicParticle`
-Enhanced knowledge entity with quantum and classical evolution.
-
-```python
-@dataclass
-class EpistemicParticle(KnowledgeEntity):
-    epistemic_state: EpistemicState = EpistemicState.ONE
-    quantum_state: Optional[Dict[str, complex]] = None
-    defense_history: List[Dict[str, Any]] = field(default_factory=list)
-    learned_weights: np.ndarray = field(default_factory=lambda: np.ones(3) * 0.33)
-```
-
-### Evolution Dynamics
-
-#### Quantum Evolution
-```python
-def _evolve_quantum(self, parameter: float):
-    if not self.quantum_state:
-        return
-    
-    # Unitary evolution
-    phase = parameter * 0.1
-    for key in self.quantum_state:
-        self.quantum_state[key] *= np.exp(1j * phase)
-    
-    # Measurement probability affects classical state
-    measurement_prob = abs(self.quantum_state.get('defined', 0))**2
-    self.determinacy = self.determinacy * 0.9 + measurement_prob * 0.1
-```
-
-#### Classical Evolution
-```python
-def _evolve_classical(self, parameter: float, context: Optional[Dict[str, Any]]):
-    if context and 'field' in context:
-        # External field influence
-        field_strength = context['field'].get('strength', 0.1)
-        field_direction = context['field'].get('direction', [0, 0, 1])
+    def __init__(self, neuron_id: str, position: Tuple[float, float, float]):
+        self.id = neuron_id
+        self.position = np.array(position)
         
-        # Apply field effects
-        self.determinacy += field_strength * field_direction[0] * 0.01
-        self.stability += field_strength * field_direction[1] * 0.01
-        self.entropy += field_strength * field_direction[2] * 0.01
-    else:
-        # Autonomous evolution toward equilibrium
-        equilibrium = {'determinacy': 0.5, 'stability': 0.5, 'entropy': 0.5}
-        decay_rate = 0.01
+        # Derived epistemological coordinates
+        self.determinacy = self._calculate_determinacy_from_position()
+        self.stability = self._calculate_stability_from_position()
+        self.entropy = self._calculate_entropy_from_position()
         
-        self.determinacy += decay_rate * (equilibrium['determinacy'] - self.determinacy)
-        self.stability += decay_rate * (equilibrium['stability'] - self.stability)
-        self.entropy += decay_rate * (equilibrium['entropy'] - self.entropy)
+        # Learning components
+        self.defense_selector = DeterministicDefenseSelector()
+        self.experience_count = 0
+        self.success_count = 0
+        self.quantum_state = None
 ```
 
-#### State Transitions
+### Attack Processing
+
 ```python
-def _update_epistemic_state(self):
-    # High determinacy and stability → ONE
-    if self.determinacy > 0.9 and self.stability > 0.9 and self.entropy < 0.1:
-        self.epistemic_state = EpistemicState.ONE
+def experience_attack(self, attack_type: str, attack_vector: Dict[str, float], 
+                     intensity: float) -> Dict[str, Any]:
+    self.experience_count += 1
     
-    # Low everything → ZERO
-    elif self.determinacy < 0.1 and self.stability < 0.1:
-        self.epistemic_state = EpistemicState.ZERO
+    # Select defense strategy
+    strategy = self.defense_selector.select_strategy(self, attack_type, attack_vector)
     
-    # High entropy with medium determinacy → INFINITY
-    elif self.entropy > 0.8 and 0.3 < self.determinacy < 0.7:
-        self.epistemic_state = EpistemicState.INFINITY
+    # Apply defense
+    defense_result = self._apply_defense_strategy(strategy, attack_type, attack_vector, intensity)
     
-    # Otherwise → INDEFINITE
+    # Update learning
+    success = defense_result['success'] > 0.5
+    if success:
+        self.success_count += 1
+    
+    # Store experience
+    self.defense_selector.update_strategy_effectiveness(
+        attack_type, attack_vector, strategy, success
+    )
+    
+    # Evolve quantum state
+    if self.quantum_state is None:
+        self.quantum_state = QuantumStateCalculator.create_superposition(self)
     else:
-        self.epistemic_state = EpistemicState.INDEFINITE
+        self.quantum_state = QuantumStateCalculator.evolve_superposition(
+            self.quantum_state, 0.1
+        )
+    
+    return {
+        'defense_used': strategy,
+        'success': defense_result['success'],
+        'learning_update': True,
+        'quantum_evolution': True
+    }
 ```
 
-#### Phase Transition Detection
+## Mathematical Foundations
+
+### Quantum Mechanics Integration
+
+The GTMØ system implements quantum mechanical principles deterministically:
+
+1. **Superposition**: `|ψ⟩ = α|0⟩ + β|1⟩ + γ|∅⟩`
+2. **Unitary Evolution**: `U(t) = e^{-iHt/ℏ}`
+3. **Measurement**: Probabilistic collapse to eigenstates
+4. **Entanglement**: Correlated states across neuron networks
+
+### Epistemological Mathematics
+
+Mathematical formalization of knowledge states:
+
+- **Determinacy Function**: `D: Space → [0,1]`
+- **Stability Function**: `S: Space → [0,1]`
+- **Entropy Function**: `E: Space → [0,1]`
+- **Phase Space**: `Φ = D × S × E`
+
+### Topological Properties
+
+The epistemological space exhibits topological structure:
+
+- **Continuity**: Small spatial changes → small epistemological changes
+- **Compactness**: Bounded domain with limit points
+- **Connectedness**: All regions accessible through continuous paths
+
+## Usage Examples
+
+### Basic Neuron Creation
+
 ```python
-def _check_phase_transitions(self):
-    if len(self.trajectory_history) < 2:
-        return
-    
-    prev = self.trajectory_history[-2]
-    curr = self.trajectory_history[-1]
-    
-    # Detect sudden jumps
-    determinacy_jump = abs(curr['determinacy'] - prev['determinacy']) > 0.3
-    state_change = curr['epistemic_state'] != prev['epistemic_state']
-    
-    if determinacy_jump or state_change:
-        self.metadata['phase_transition'] = {
-            'at_parameter': curr['parameter'],
-            'from_state': prev['epistemic_state'],
-            'to_state': curr['epistemic_state']
-        }
-```
+from gtmo_core_v2 import AdaptiveGTMONeuron
 
-## 🔧 System Integration
+# Create neuron at specific position
+neuron = AdaptiveGTMONeuron("test_neuron", (0.3, 0.7, 0.2))
 
-### `GTMOSystemV2`
-Main system orchestrating all components.
-
-```python
-class GTMOSystemV2:
-    """Enhanced GTMØ system with all improvements."""
-    
-    def __init__(self):
-        self.classifier = TopologicalClassifier()
-        self.axioms = [
-            AX0_SystemicUncertainty(),
-            AX1_OntologicalDifference(),
-            AX6_MinimalEntropy()
-        ]
-        self.neurons = []
-        self.epistemic_particles = []
-        self.iteration = 0
-        self.phase_space_history = []
-```
-
-### System Evolution
-```python
-def evolve(self):
-    self.iteration += 1
-    
-    # Apply executable axioms
-    for axiom in self.axioms:
-        axiom.apply(self)
-    
-    # Evolve epistemic particles
-    for particle in self.epistemic_particles:
-        particle.evolve(self.iteration / 10.0)
-    
-    # Classify all entities using topological classifier
-    classifications = {}
-    for particle in self.epistemic_particles:
-        class_type = self.classifier.classify(particle)
-        classifications[particle] = class_type
-    
-    # Record phase space evolution
-    self.phase_space_history.append({
-        'iteration': self.iteration,
-        'classifications': classifications,
-        'phase_distribution': self._calculate_phase_distribution()
-    })
+print(f"Determinacy: {neuron.determinacy:.3f}")
+print(f"Stability: {neuron.stability:.3f}")
+print(f"Entropy: {neuron.entropy:.3f}")
 ```
 
 ### Attack Simulation
+
 ```python
-def simulate_attack(self, attack_type: str, target_neurons: List[int], intensity: float = 1.0):
-    results = []
-    attack_vector = self._generate_attack_vector(attack_type)
-    
-    for idx in target_neurons:
-        if 0 <= idx < len(self.neurons):
-            neuron = self.neurons[idx]
-            result = neuron.experience_attack(attack_type, attack_vector, intensity)
-            results.append({
-                'neuron_id': neuron.id,
-                'result': result,
-                'learned_patterns': neuron.get_learned_patterns()
-            })
-    
-    return results
+# Define attack vector
+attack_vector = {
+    'semantic_attack': 0.8,
+    'logical_attack': 0.1,
+    'entropy_attack': 0.1
+}
+
+# Process attack
+result = neuron.experience_attack("semantic_confusion", attack_vector, 0.7)
+
+print(f"Defense used: {result['defense_used']}")
+print(f"Success rate: {result['success']:.3f}")
 ```
 
-### Attack Vectors
+### System Mode Calculation
+
 ```python
-def _generate_attack_vector(self, attack_type: str) -> Dict[str, float]:
-    vectors = {
-        'anti_paradox': {
-            'semantic_attack': 0.8, 
-            'logical_attack': 0.9, 
-            'entropy_attack': -0.7
-        },
-        'overflow': {
-            'semantic_attack': 2.0, 
-            'logical_attack': 2.0, 
-            'entropy_attack': 2.0
-        },
-        'confusion': {
-            'semantic_attack': 0.5, 
-            'logical_attack': -0.5, 
-            'entropy_attack': 0.8
-        },
-        'rigid_logic': {
-            'semantic_attack': -0.3, 
-            'logical_attack': -0.9, 
-            'entropy_attack': -0.8
-        }
-    }
-    
-    return vectors.get(attack_type, {
-        'semantic_attack': 0.5, 
-        'logical_attack': 0.5, 
-        'entropy_attack': 0.5
-    })
+from gtmo_core_v2 import FoundationalModeCalculator
+
+class MockSystem:
+    def __init__(self):
+        self.neurons = [
+            AdaptiveGTMONeuron("n1", (0.1, 0.2, 0.3)),
+            AdaptiveGTMONeuron("n2", (0.8, 0.9, 0.1)),
+            AdaptiveGTMONeuron("n3", (0.5, 0.4, 0.6))
+        ]
+
+system = MockSystem()
+mode = FoundationalModeCalculator.calculate_mode(system)
+print(f"Foundational mode: {mode}")
 ```
 
-## 📊 System Reporting
+### Quantum State Evolution
 
-### Comprehensive System Report
 ```python
-def get_system_report(self) -> Dict[str, Any]:
-    return {
-        'iteration': self.iteration,
-        'total_neurons': len(self.neurons),
-        'total_particles': len(self.epistemic_particles),
-        'phase_distribution': self._calculate_phase_distribution(),
-        'axiom_compliance': {
-            axiom.__class__.__name__: axiom.verify(self) 
-            for axiom in self.axioms
-        },
-        'learning_summary': {
-            'total_experiences': sum(
-                n.get_learned_patterns()['total_experiences'] 
-                for n in self.neurons
-            ),
-            'average_success_rate': np.mean([
-                n.get_learned_patterns()['success_rate'] 
-                for n in self.neurons
-            ]),
-            'neurons_with_experience': sum(
-                1 for n in self.neurons 
-                if n.get_learned_patterns()['total_experiences'] > 0
-            )
-        }
-    }
+from gtmo_core_v2 import QuantumStateCalculator
+
+# Create initial superposition
+quantum_state = QuantumStateCalculator.create_superposition(neuron)
+
+# Evolve through time
+for t in range(10):
+    quantum_state = QuantumStateCalculator.evolve_superposition(quantum_state, 0.1)
+    total_prob = sum(abs(amp)**2 for amp in quantum_state.values())
+    print(f"Time {t}: Total probability = {total_prob:.6f}")
 ```
 
-## 🎯 Usage Examples
+## Research Applications
 
-### Basic System Setup
-```python
-from gtmo_core_v2 import GTMOSystemV2, AdaptiveGTMONeuron, EpistemicParticle
+### Adversarial Robustness
 
-# Create system
-system = GTMOSystemV2()
+GTMØ neurons demonstrate superior robustness against adversarial attacks through:
 
-# Add adaptive neurons
-for i in range(5):
-    neuron = AdaptiveGTMONeuron(f"neuron_{i}", (i, 0, 0))
-    system.add_neuron(neuron)
+1. **Adaptive Strategy Selection**: Learning optimal defenses from experience
+2. **Quantum Superposition**: Maintaining multiple response states simultaneously
+3. **Epistemological Grounding**: Responses based on fundamental knowledge properties
 
-# Add epistemic particles
-particles = [
-    EpistemicParticle("Certain fact", 0.9, 0.9, 0.1),
-    EpistemicParticle("Paradox", 0.5, 0.2, 0.9),
-    EpistemicParticle("Emerging pattern", 0.6, 0.4, 0.7)
-]
+### Consciousness Modeling
 
-for particle in particles:
-    system.add_particle(particle)
-```
+The system provides a mathematical framework for modeling consciousness:
 
-### Context-Aware Alienated Numbers
-```python
-from gtmo_core_v2 import AlienatedNumber
+1. **Quantum Coherence**: Maintaining superposition states
+2. **Self-Awareness**: Axioms that trigger self-evaluation
+3. **Adaptive Learning**: Experience-based behavioral modification
 
-# Future prediction with high uncertainty
-bitcoin_2030 = AlienatedNumber("bitcoin_price_2030", context={
-    'temporal_distance': 5.5,
-    'volatility': 0.9,
-    'predictability': 0.1,
-    'domain': 'future_prediction',
-    'relations': [
-        {'type': 'depends_on', 'with': 'market_sentiment'},
-        {'type': 'contradicts', 'with': 'price_stability'}
-    ]
-})
+### Artificial General Intelligence
 
-print(f"Bitcoin 2030 PSI Score: {bitcoin_2030.psi_gtm_score():.4f}")
-print(f"Bitcoin 2030 Entropy: {bitcoin_2030.e_gtm_entropy():.4f}")
+GTMØ principles contribute to AGI development:
 
-# Mathematical concept with structural indefiniteness
-imaginary_unit = AlienatedNumber("sqrt(-1)", context={
-    'domain': 'mathematical_paradox',
-    'relations': [
-        {'type': 'contradicts', 'with': 'real_numbers'},
-        {'type': 'supports', 'with': 'complex_analysis'}
-    ],
-    'predictability': 0.95  # Well-defined within complex numbers
-})
+1. **Fundamental Uncertainty**: Modeling the unknown as a basic category
+2. **Adaptive Intelligence**: Learning from limited experiences
+3. **Emergent Behavior**: System-wide properties from local interactions
 
-print(f"i PSI Score: {imaginary_unit.psi_gtm_score():.4f}")
-print(f"i Entropy: {imaginary_unit.e_gtm_entropy():.4f}")
-```
+## Performance Characteristics
 
-### Topological Classification
-```python
-from gtmo_core_v2 import TopologicalClassifier, KnowledgeEntity
+### Deterministic Behavior
 
-classifier = TopologicalClassifier()
+All operations are fully deterministic and reproducible:
 
-# Test entities with different phase space positions
-entities = [
-    KnowledgeEntity("2 + 2 = 4", 0.95, 0.92, 0.08),           # Near particle attractor
-    KnowledgeEntity("This statement is false", 0.5, 0.1, 0.9), # Near emergent attractor
-    KnowledgeEntity("Maybe it will rain", 0.3, 0.4, 0.7),      # Shadow region
-    KnowledgeEntity("Consciousness emerges", 0.6, 0.5, 0.8)    # Liminal region
-]
+- No random number generators
+- Consistent outputs for identical inputs
+- Predictable state evolution
 
-for entity in entities:
-    classification = classifier.classify(entity)
-    phase_point = entity.to_phase_point()
-    print(f"'{entity.content}' → {classification.value} at {phase_point}")
-```
+### Computational Complexity
 
-### Attack Simulation and Learning
-```python
-# Simulate adversarial attacks
-attack_results = system.simulate_attack(
-    attack_type='anti_paradox',
-    target_neurons=[0, 1, 2],
-    intensity=0.8
-)
+- **Quantum State Creation**: O(1) per neuron
+- **Defense Strategy Selection**: O(k) where k = number of strategies
+- **Learning Update**: O(1) per experience
+- **System Mode Calculation**: O(n) where n = number of neurons
 
-for result in attack_results:
-    print(f"\nNeuron {result['neuron_id']}:")
-    print(f"  Defense used: {result['result']['defense_used']}")
-    print(f"  Success rate: {result['result']['success']:.3f}")
-    
-    patterns = result['learned_patterns']
-    print(f"  Total experiences: {patterns['total_experiences']}")
-    print(f"  Success rate: {patterns['success_rate']:.2%}")
-    print(f"  Preferred strategies: {patterns['preferred_strategies']}")
-```
+### Memory Requirements
 
-### System Evolution
-```python
-# Evolve system over time
-for iteration in range(10):
-    system.evolve()
-    
-    if iteration % 3 == 0:
-        report = system.get_system_report()
-        print(f"\nIteration {report['iteration']}:")
-        print(f"  Phase distribution: {report['phase_distribution']}")
-        print(f"  Axiom compliance: {report['axiom_compliance']}")
-        print(f"  Learning summary: {report['learning_summary']}")
-```
+- **Per Neuron**: ~1KB for state and history
+- **System-wide**: Linear scaling with neuron count
+- **Quantum States**: 3 complex numbers per neuron
 
-## 🔬 Demonstration Function
-
-The module includes a comprehensive demonstration function `demonstrate_v2_improvements()` that showcases:
-
-1. **Dynamic Context-Aware Values** vs. static constants
-2. **Topological Phase Space Classification** vs. threshold-based
-3. **Executable Axioms in Action** with quantum state creation
-4. **Adaptive Learning Through Experience** with attack simulation
-5. **System Evolution** with epistemic particles
-
-### Running the Demonstration
-```python
-from gtmo_core_v2 import demonstrate_v2_improvements
-
-# Run full demonstration
-demonstrate_v2_improvements()
-```
-
-## 🏗️ Architecture Benefits
-
-### v2.0 Improvements Summary
-
-| Component | v1.0 Approach | v2.0 Enhancement |
-|-----------|---------------|------------------|
-| **Alienated Numbers** | Fixed 0.999... values | Dynamic context-aware calculation |
-| **Classification** | Percentage thresholds | Topological attractors in phase space |
-| **Axioms** | Philosophical statements | Executable transformations |
-| **Learning** | Deterministic formulas | Real experience-based adaptation |
-| **States** | Binary categories | Quantum superposition + classical |
-| **Defense** | Fixed responses | Neural network + memory consolidation |
-
-### Key Technical Advantages
-
-1. **Semantic Grounding**: Values derived from actual content analysis
-2. **Topological Robustness**: Classification stable under continuous deformations
-3. **Executable Theory**: Axioms actively shape system behavior
-4. **Genuine Learning**: Neurons improve performance through experience
-5. **Quantum Integration**: Superposition states capture fundamental uncertainty
-6. **Adaptive Attractors**: Classification system learns from feedback
-
-## 🔮 Future Extensions
+## Future Extensions
 
 ### Planned Enhancements
-- **Multi-modal learning** with transformer embeddings
-- **Graph neural networks** for relational reasoning
-- **Reinforcement learning** for strategy optimization
-- **Distributed system** architecture
-- **Real-time adaptation** to environmental changes
-- **Cross-domain knowledge** transfer mechanisms
+
+1. **Multi-Modal Learning**: Integration with transformer embeddings
+2. **Graph Neural Networks**: Relational reasoning capabilities
+3. **Distributed Architecture**: Scalable multi-node systems
+4. **Real-Time Adaptation**: Dynamic response to environmental changes
 
 ### Research Directions
-- **Quantum computing** integration for true superposition
-- **Consciousness modeling** with meta-cognitive layers
-- **Temporal logic** for dynamic axiom evolution
-- **Emergence detection** through topological data analysis
-- **Adversarial robustness** in knowledge systems
+
+1. **Quantum Computing Integration**: True quantum superposition
+2. **Consciousness Studies**: Meta-cognitive layer implementation
+3. **Temporal Logic**: Dynamic axiom evolution
+4. **Emergence Detection**: Topological data analysis
+
+## Conclusion
+
+GTMØ Core v2.0 represents a fundamental breakthrough in artificial intelligence, moving beyond traditional probabilistic models to implement a mathematically rigorous framework for modeling epistemological uncertainty. The deterministic quantum approach provides both theoretical elegance and practical robustness, opening new avenues for AGI research and consciousness modeling.
+
+The system's ability to learn adaptive defense strategies while maintaining quantum superposition states demonstrates the potential for AI systems that can handle fundamental uncertainty not as a limitation, but as a core feature of intelligence itself.
 
 ---
 
-**GTMØ Core v2.0** represents a significant advancement in mathematical indefiniteness modeling, moving from static philosophical concepts to dynamic, learning-enabled systems that actively embody the principles of indefiniteness while maintaining mathematical rigor and computational efficiency.
+**Authors**: Grzegorz Skuza  
+**Version**: 2.1. (Fixed/Deterministic)  
+**Date**: 2025  
